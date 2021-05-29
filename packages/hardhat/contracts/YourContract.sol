@@ -1,5 +1,5 @@
-pragma solidity >=0.6.0 <0.9.0;
 //SPDX-License-Identifier: MIT
+pragma solidity >=0.6.0 <0.9.0;
 
 import "hardhat/console.sol";
 //import "@openzeppelin/contracts/access/Ownable.sol"; //https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol
@@ -18,6 +18,10 @@ contract YourContract {
     purpose = newPurpose;
     console.log(msg.sender,"set purpose to",purpose);
     emit SetPurpose(msg.sender, purpose);
+  }
+
+  function showAddress() public {
+    console.log(msg.sender);
   }
 
 }
