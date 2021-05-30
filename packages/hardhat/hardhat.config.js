@@ -59,7 +59,8 @@ module.exports = {
       },
     },
     kovan: {
-      url: `https://kovan.infura.io/v3/${process.env.INFURA_ID}`, //<---- YOUR INFURA ID! (or it won't work)
+      // url: `https://kovan.infura.io/v3/${process.env.INFURA_ID}`, 
+      url: `https://kovan.infura.io/v3/b2272e2c601747d7a163eef913f64e16`, //<---- YOUR INFURA ID! (or it won't work)
       accounts: {
         mnemonic: mnemonic(),
       },
