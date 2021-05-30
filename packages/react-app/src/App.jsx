@@ -360,7 +360,14 @@ function App(props) {
               blockExplorer={blockExplorer}
             />
 
-            {/* Uncomment to display and interact with an external contract (DAI on mainnet):
+            <Contract
+              name="RandomNumberConsumer"
+              signer={userProvider.getSigner()}
+              provider={localProvider}
+              address={address}
+              blockExplorer={blockExplorer}
+            />
+
             <Contract
               name="DAI"
               customContract={mainnetDAIContract}
@@ -369,7 +376,7 @@ function App(props) {
               address={address}
               blockExplorer={blockExplorer}
             />
-            */}
+           
           </Route>
           <Route path="/hints">
             <Hints
