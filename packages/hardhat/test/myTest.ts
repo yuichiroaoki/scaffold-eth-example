@@ -1,8 +1,10 @@
-const { ethers } = require("hardhat");
 const { use, expect } = require("chai");
 const { solidity } = require("ethereum-waffle");
+import { expect } from "chai";
+import { ethers } from "hardhat";
 
 use(solidity);
+
 
 describe("My Dapp", function () {
   let myContract;

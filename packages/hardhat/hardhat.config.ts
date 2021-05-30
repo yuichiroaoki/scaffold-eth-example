@@ -2,10 +2,12 @@ const { utils } = require("ethers");
 const fs = require("fs");
 const chalk = require("chalk");
 require('dotenv').config({ path: __dirname + '/.env' })
-require("@nomiclabs/hardhat-waffle");
 require("@tenderly/hardhat-tenderly");
 
-require("@nomiclabs/hardhat-etherscan");
+import "@nomiclabs/hardhat-etherscan";
+import { task } from "hardhat/config";
+import "@nomiclabs/hardhat-waffle";
+import "@nomiclabs/hardhat-ethers";
 
 const { isAddress, getAddress, formatUnits, parseUnits } = utils;
 

@@ -1,9 +1,10 @@
 /* eslint no-use-before-define: "warn" */
 const fs = require("fs");
 const chalk = require("chalk");
-const { config, ethers, tenderly, run } = require("hardhat");
+// const { config, ethers, tenderly, run } = require("hardhat");
 const { utils } = require("ethers");
 const R = require("ramda");
+import { config, ethers, tenderly } from "hardhat";
 
 const main = async () => {
   console.log("\n\n 📡 Deploying...\n");
