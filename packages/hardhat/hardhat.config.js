@@ -37,7 +37,7 @@ function mnemonic() {
 }
 
 module.exports = {
-  defaultNetwork,
+  defaultNetwork: "kovan",
 
   // don't forget to set your provider like:
   // REACT_APP_PROVIDER=https://dai.poa.network in packages/react-app/.env

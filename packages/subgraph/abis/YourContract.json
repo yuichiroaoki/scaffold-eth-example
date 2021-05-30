@@ -25,6 +25,19 @@
   },
   {
     "inputs": [],
+    "name": "getThePrice",
+    "outputs": [
+      {
+        "internalType": "int256",
+        "name": "",
+        "type": "int256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "purpose",
     "outputs": [
       {
@@ -45,13 +58,6 @@
       }
     ],
     "name": "setPurpose",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "showAddress",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

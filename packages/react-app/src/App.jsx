@@ -44,7 +44,7 @@ import { ExampleUI, Hints, Subgraph } from "./views";
 */
 
 /// 📡 What chain are your contracts deployed to?
-const targetNetwork = NETWORKS.localhost; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
+const targetNetwork = NETWORKS.kovan;
 
 // 😬 Sorry for all the console logging
 const DEBUG = true;
@@ -354,14 +354,6 @@ function App(props) {
 
             <Contract
               name="YourContract"
-              signer={userProvider.getSigner()}
-              provider={localProvider}
-              address={address}
-              blockExplorer={blockExplorer}
-            />
-
-            <Contract
-              name="PriceConsumerV3"
               signer={userProvider.getSigner()}
               provider={localProvider}
               address={address}
