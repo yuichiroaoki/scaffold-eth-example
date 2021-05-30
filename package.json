@@ -61,5 +61,6 @@
       "**/hardhat/**"
     ]
   },
+  "license": "MIT",
   "dependencies": {}
 }
