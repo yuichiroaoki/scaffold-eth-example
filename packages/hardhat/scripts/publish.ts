@@ -1,11 +1,10 @@
 const fs = require("fs");
 const chalk = require("chalk");
 const bre = require("hardhat");
-
 const publishDir = "../react-app/src/contracts";
 const graphDir = "../subgraph";
 
-function publishContract(contractName) {
+function publishContract(contractName: string) {
   console.log(
     " 💽 Publishing",
     chalk.cyan(contractName),
@@ -79,8 +78,8 @@ async function main() {
   if (!fs.existsSync(publishDir)) {
     fs.mkdirSync(publishDir);
   }
-  const finalContractList = [];
-  fs.readdirSync(bre.config.paths.sources).forEach((file) => {
+  const finalContractList: any[] = [];
+  fs.readdirSync(bre.config.paths.sources).forEach((file: any) => {
     if (file.indexOf(".sol") >= 0) {
       const contractName = file.replace(".sol", "");
       // Add contract to list if publishing is successful
