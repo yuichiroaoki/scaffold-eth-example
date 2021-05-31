@@ -1,13 +1,13 @@
-const { use, expect } = require("chai");
 const { solidity } = require("ethereum-waffle");
-import { expect } from "chai";
+import { use, expect } from "chai";
 import { ethers } from "hardhat";
+import { Contract } from "ethers";
 
 use(solidity);
 
 
 describe("My Dapp", function () {
-  let myContract;
+  let myContract: Contract;
 
   describe("YourContract", function () {
     it("Should deploy YourContract", async function () {

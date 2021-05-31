@@ -2,7 +2,7 @@ const { utils } = require("ethers");
 const fs = require("fs");
 const chalk = require("chalk");
 require('dotenv').config({ path: __dirname + '/.env' })
-require("@tenderly/hardhat-tenderly");
+import "@tenderly/hardhat-tenderly";
 
 import "@nomiclabs/hardhat-etherscan";
 import { task } from "hardhat/config";
@@ -130,7 +130,7 @@ module.exports = {
 
 const DEBUG = false;
 
-function debug(text) {
+function debug(text: string) {
   if (DEBUG) {
     console.log(text);
   }
