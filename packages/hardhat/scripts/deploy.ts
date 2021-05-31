@@ -69,7 +69,7 @@ const main = async () => {
 };
 
 const deploy = async (
-  contractName,
+  contractName: string,
   _args = [],
   overrides = {},
   libraries = {}
@@ -118,7 +118,7 @@ const deploy = async (
 // abi encodes contract arguments
 // useful when you want to manually verify the contracts
 // for example, on Etherscan
-const abiEncodeArgs = (deployed, contractArgs) => {
+const abiEncodeArgs = (deployed: any, contractArgs: any) => {
   // not writing abi encoded args if this does not pass
   if (
     !contractArgs ||
@@ -135,13 +135,13 @@ const abiEncodeArgs = (deployed, contractArgs) => {
 };
 
 // checks if it is a Solidity file
-const isSolidity = (fileName) =>
+const isSolidity = (fileName: string) =>
   fileName.indexOf(".sol") >= 0 &&
   fileName.indexOf(".swp") < 0 &&
   fileName.indexOf(".swap") < 0;
 
-const readArgsFile = (contractName) => {
-  let args = [];
+const readArgsFile = (contractName: string) => {
+  let args: any[] = [];
   try {
     const argsFile = `./contracts/${contractName}.args`;
     if (!fs.existsSync(argsFile)) return args;
@@ -152,12 +152,13 @@ const readArgsFile = (contractName) => {
   return args;
 };
 
-function sleep(ms) {
+function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 // If you want to verify on https://tenderly.co/
-const tenderlyVerify = async ({ contractName, contractAddress }) => {
+const tenderlyVerify = async ({ contractName, contractAddress }: 
+  {contractName: string, contractAddress: string}) => {
   const tenderlyNetworks = [
     "kovan",
     "goerli",
