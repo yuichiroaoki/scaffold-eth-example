@@ -21,14 +21,18 @@
     "@nomiclabs/hardhat-waffle": "^2.0.0",
     "@openzeppelin/contracts": "^3.2.0",
     "@tenderly/hardhat-tenderly": "^1.0.10",
+    "@typechain/ethers-v5": "^7.0.0",
     "chalk": "^4.1.0",
     "dotenv": "^10.0.0",
     "ethereum-waffle": "^3.1.1",
     "ethers": "^5.0.17",
     "hardhat": "^2.3.0",
+    "hardhat-typechain": "^0.3.5",
     "node-watch": "^0.7.0",
     "qrcode-terminal": "^0.12.0",
-    "ramda": "^0.27.1"
+    "ramda": "^0.27.1",
+    "ts-generator": "^0.1.1",
+    "typechain": "^5.0.0"
   },
   "scripts": {
     "chain": "hardhat node",

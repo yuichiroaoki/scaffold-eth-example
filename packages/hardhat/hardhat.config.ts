@@ -8,7 +8,7 @@ import { task } from "hardhat/config";
 import "@nomiclabs/hardhat-waffle";
 import "@nomiclabs/hardhat-ethers";
 import { HardhatUserConfig } from "hardhat/types";
-
+import "hardhat-typechain";
 
 const { isAddress, getAddress, formatUnits, parseUnits } = utils;
 
