@@ -1,10 +1,9 @@
 /* eslint no-use-before-define: "warn" */
 const fs = require("fs");
 const chalk = require("chalk");
-// const { config, ethers, tenderly, run } = require("hardhat");
 const { utils } = require("ethers");
 const R = require("ramda");
-import { config, ethers, tenderly } from "hardhat";
+import { config, ethers, tenderly, run } from "hardhat";
 
 const main = async () => {
   console.log("\n\n 📡 Deploying...\n");
@@ -43,23 +42,14 @@ const main = async () => {
   });
   */
 
-  // If you want to verify your contract on tenderly.co (see setup details in the scaffold-eth README!)
-  /*
-  await tenderlyVerify(
-    {contractName: "YourContract",
-     contractAddress: yourContract.address
-  })
-  */
 
   // If you want to verify your contract on etherscan
-  /*
   console.log(chalk.blue('verifying on etherscan'))
   await run("verify:verify", {
     address: yourContract.address,
     // contract: "contracts/Example.sol:ExampleContract" // If you are inheriting from multiple contracts in yourContract.sol, you can specify which to verify
     // constructorArguments: args // If your contract has constructor arguments, you can pass them as an array
   })
-  */
 
   console.log(
     " 💾  Artifacts (address, abi, and args) saved to: ",

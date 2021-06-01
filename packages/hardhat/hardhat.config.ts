@@ -127,6 +127,10 @@ const config: HardhatUserConfig = {
     // Obtain one at https://etherscan.io/
     apiKey: process.env.ETHERSCAN_API_KEY,
   },
+  typechain: {
+    outDir: "src/types",
+    target: "ethers-v5",
+  },
 };
 
 export default config;
