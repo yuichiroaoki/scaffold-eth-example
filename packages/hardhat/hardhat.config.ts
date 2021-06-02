@@ -1,5 +1,4 @@
-const { utils } = require("ethers");
-const fs = require("fs");
+import * as fs from 'fs';
 const chalk = require("chalk");
 require('dotenv').config({ path: __dirname + '/.env' })
 import "@tenderly/hardhat-tenderly";
@@ -7,11 +6,15 @@ import "@nomiclabs/hardhat-etherscan";
 import { task } from "hardhat/config";
 import "@nomiclabs/hardhat-waffle";
 import "@nomiclabs/hardhat-ethers";
-import { HardhatUserConfig } from "hardhat/types";
+import { utils } from "ethers";
+// import { HardhatUserConfig } from "hardhat/types";
 import "hardhat-typechain";
 
 const { isAddress, getAddress, formatUnits, parseUnits } = utils;
 
+//
+// Select the network you want to deploy to here:
+//
 const defaultNetwork = "kovan";
 
 function mnemonic(): any {
@@ -27,15 +30,26 @@ function mnemonic(): any {
   return "";
 }
 
-const config: HardhatUserConfig = {
+
+// const config: HardhatUserConfig = {
+const config: any = {
   defaultNetwork: "kovan",
+
+  // don't forget to set your provider like:
+  // REACT_APP_PROVIDER=https://dai.poa.network in packages/react-app/.env
+  // (then your frontend will talk to your contracts on the live network!)
+  // (you will need to restart the `yarn run start` dev server after editing the .env)
 
   networks: {
     localhost: {
       url: "http://localhost:8545",
+      /*
+        notice no mnemonic here? it will just use account 0 of the hardhat node to deploy
+        (you can put in a mnemonic here to set the deployer locally)
+      */
     },
     rinkeby: {
-      url: `https://rinkeby.infura.io/v3/${process.env.INFURA_ID}`, 
+      url: `https://rinkeby.infura.io/v3/${process.env.INFURA_ID}`, //<---- YOUR INFURA ID! (or it won't work)
       accounts: {
         mnemonic: mnemonic(),
       },
@@ -47,19 +61,19 @@ const config: HardhatUserConfig = {
       },
     },
     mainnet: {
-      url: `https://mainnet.infura.io/v3/${process.env.INFURA_ID}`,
+      url: `https://mainnet.infura.io/v3/${process.env.INFURA_ID}`, //<---- YOUR INFURA ID! (or it won't work)
       accounts: {
         mnemonic: mnemonic(),
       },
     },
     ropsten: {
-      url: `https://ropsten.infura.io/v3/${process.env.INFURA_ID}`,
+      url: `https://ropsten.infura.io/v3/${process.env.INFURA_ID}`, //<---- YOUR INFURA ID! (or it won't work)
       accounts: {
         mnemonic: mnemonic(),
       },
     },
     goerli: {
-      url: `https://goerli.infura.io/v3/${process.env.INFURA_ID}`, 
+      url: `https://goerli.infura.io/v3/${process.env.INFURA_ID}`, //<---- YOUR INFURA ID! (or it won't work)
       accounts: {
         mnemonic: mnemonic(),
       },
@@ -102,12 +116,14 @@ const config: HardhatUserConfig = {
     ],
   },
   etherscan: {
+    // Your API key for Etherscan
+    // Obtain one at https://etherscan.io/
     apiKey: process.env.ETHERSCAN_API_KEY,
   },
-  // typechain: {
-  //   outDir: "src/types",
-  //   target: "ethers-v5",
-  // },
+  typechain: {
+    outDir: "src/types",
+    target: "ethers-v5",
+  },
 };
 
 export default config;
@@ -275,7 +291,7 @@ task(
 // task("account", "Get balance informations for the deployment account.", async (_, { ethers }) => {
 //   const hdkey = require('ethereumjs-wallet/hdkey');
 //   const bip39 = require("bip39")
-//   let mnemonic = fs.readFileSync("./mnemonic.txt").toString().trim()
+//   const mnemonic = fs.readFileSync("./mnemonic.txt").toString().trim()
 //   if (DEBUG) console.log("mnemonic", mnemonic)
 //   const seed = await bip39.mnemonicToSeed(mnemonic)
 //   if (DEBUG) console.log("seed", seed)
@@ -295,6 +311,7 @@ task(
 //   console.log("‍📬 Deployer Account is " + address)
 //   for (const n in config.networks) {
 //     try {
+//       // const provider = new ethers.providers.JsonRpcProvider(config.networks["kovan"].url);
 //       const provider = new ethers.providers.JsonRpcProvider(config.networks[n].url);
 //       const balance = await provider.getBalance(address)
 //       console.log(" -- " + n + " --  -- -- 📡 ")
@@ -390,7 +407,7 @@ task("send", "Send ETH")
       txRequest.data = taskArgs.data;
       debug(`Adding data to payload: ${txRequest.data}`);
     }
-    debug(txRequest.gasPrice / 1000000000 + " gwei");
+    debug(parseFloat(txRequest.gasPrice) / 1000000000 + " gwei");
     debug(JSON.stringify(txRequest, null, 2));
 
     return send(fromSigner, txRequest);

@@ -3,7 +3,6 @@
 import * as fs from 'fs';
 const chalk = require("chalk");
 import { config, ethers, tenderly, run } from "hardhat";
-// const { utils } = require("ethers");
 import { utils } from "ethers";
 const R = require("ramda");
 
@@ -108,7 +107,6 @@ const deploy = async (
 
 // abi encodes contract arguments
 // useful when you want to manually verify the contracts
-// for example, on Etherscan
 const abiEncodeArgs = (deployed: any, contractArgs: any) => {
   // not writing abi encoded args if this does not pass
   if (
@@ -146,47 +144,6 @@ const readArgsFile = (contractName: string) => {
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
-
-// If you want to verify on https://tenderly.co/
-const tenderlyVerify = async ({ contractName, contractAddress }: 
-  {contractName: string, contractAddress: string}) => {
-  const tenderlyNetworks = [
-    "kovan",
-    "goerli",
-    "mainnet",
-    "rinkeby",
-    "ropsten",
-    "matic",
-    "mumbai",
-    "xDai",
-    "POA",
-  ];
-  const targetNetwork = process.env.HARDHAT_NETWORK || config.defaultNetwork;
-
-  if (tenderlyNetworks.includes(targetNetwork)) {
-    console.log(
-      chalk.blue(
-        ` 📁 Attempting tenderly verification of ${contractName} on ${targetNetwork}`
-      )
-    );
-
-    await tenderly.persistArtifacts({
-      name: contractName,
-      address: contractAddress,
-    });
-
-    const verification = await tenderly.verify({
-      name: contractName,
-      address: contractAddress,
-      network: targetNetwork,
-    });
-
-    return verification;
-  }
-  console.log(
-    chalk.grey(` 🧐 Contract verification not supported on ${targetNetwork}`)
-  );
-};
 
 main()
   .then(() => process.exit(0))
