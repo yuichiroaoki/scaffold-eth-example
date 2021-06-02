@@ -16,14 +16,6 @@ const main = async () => {
   // const secondContract = await deploy("SecondContract")
 
 
-<<<<<<< HEAD:packages/hardhat/scripts/deploy.ts
-  console.log(chalk.blue('verifying on etherscan'))
-  await run("verify:verify", {
-    address: yourContract.address,
-    // contract: "contracts/Example.sol:ExampleContract" // If you are inheriting from multiple contracts in yourContract.sol, you can specify which to verify
-    // constructorArguments: args // If your contract has constructor arguments, you can pass them as an array
-  })
-=======
   /*
   //If you want to send value to an address from the deployer
   const deployerWallet = ethers.provider.getSigner()
@@ -55,7 +47,6 @@ const main = async () => {
   //   // contract: "contracts/Example.sol:ExampleContract" // If you are inheriting from multiple contracts in yourContract.sol, you can specify which to verify
   //   // constructorArguments: args // If your contract has constructor arguments, you can pass them as an array
   // })
->>>>>>> master:packages/hardhat/scripts/deploy.js
 
   console.log(
     " 💾  Artifacts (address, abi, and args) saved to: ",
