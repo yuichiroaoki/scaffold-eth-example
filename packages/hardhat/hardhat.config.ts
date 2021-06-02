@@ -12,18 +12,6 @@ import "hardhat-typechain";
 
 const { isAddress, getAddress, formatUnits, parseUnits } = utils;
 
-/*
-      📡 This is where you configure your deploy configuration for 🏗 scaffold-eth
-
-      check out `packages/scripts/deploy.js` to customize your deployment
-
-      out of the box it will auto deploy anything in the `contracts` folder and named *.sol
-      plus it will use *.args for constructor args
-*/
-
-//
-// Select the network you want to deploy to here:
-//
 const defaultNetwork = "kovan";
 
 function mnemonic(): any {
@@ -42,21 +30,12 @@ function mnemonic(): any {
 const config: HardhatUserConfig = {
   defaultNetwork: "kovan",
 
-  // don't forget to set your provider like:
-  // REACT_APP_PROVIDER=https://dai.poa.network in packages/react-app/.env
-  // (then your frontend will talk to your contracts on the live network!)
-  // (you will need to restart the `yarn run start` dev server after editing the .env)
-
   networks: {
     localhost: {
       url: "http://localhost:8545",
-      /*
-        notice no mnemonic here? it will just use account 0 of the hardhat node to deploy
-        (you can put in a mnemonic here to set the deployer locally)
-      */
     },
     rinkeby: {
-      url: `https://rinkeby.infura.io/v3/${process.env.INFURA_ID}`, //<---- YOUR INFURA ID! (or it won't work)
+      url: `https://rinkeby.infura.io/v3/${process.env.INFURA_ID}`, 
       accounts: {
         mnemonic: mnemonic(),
       },
@@ -68,19 +47,19 @@ const config: HardhatUserConfig = {
       },
     },
     mainnet: {
-      url: `https://mainnet.infura.io/v3/${process.env.INFURA_ID}`, //<---- YOUR INFURA ID! (or it won't work)
+      url: `https://mainnet.infura.io/v3/${process.env.INFURA_ID}`,
       accounts: {
         mnemonic: mnemonic(),
       },
     },
     ropsten: {
-      url: `https://ropsten.infura.io/v3/${process.env.INFURA_ID}`, //<---- YOUR INFURA ID! (or it won't work)
+      url: `https://ropsten.infura.io/v3/${process.env.INFURA_ID}`,
       accounts: {
         mnemonic: mnemonic(),
       },
     },
     goerli: {
-      url: `https://goerli.infura.io/v3/${process.env.INFURA_ID}`, //<---- YOUR INFURA ID! (or it won't work)
+      url: `https://goerli.infura.io/v3/${process.env.INFURA_ID}`, 
       accounts: {
         mnemonic: mnemonic(),
       },
@@ -123,14 +102,12 @@ const config: HardhatUserConfig = {
     ],
   },
   etherscan: {
-    // Your API key for Etherscan
-    // Obtain one at https://etherscan.io/
     apiKey: process.env.ETHERSCAN_API_KEY,
   },
-  typechain: {
-    outDir: "src/types",
-    target: "ethers-v5",
-  },
+  // typechain: {
+  //   outDir: "src/types",
+  //   target: "ethers-v5",
+  // },
 };
 
 export default config;
