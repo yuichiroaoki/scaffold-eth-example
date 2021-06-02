@@ -1,6 +1,8 @@
 import * as fs from 'fs';
 const chalk = require("chalk");
-require('dotenv').config({ path: __dirname + '/.env' })
+import * as dotenv from "dotenv";
+dotenv.config({ path: __dirname+'/.env' });
+
 import "@tenderly/hardhat-tenderly";
 import "@nomiclabs/hardhat-etherscan";
 import { task } from "hardhat/config";
@@ -35,18 +37,9 @@ function mnemonic(): any {
 const config: any = {
   defaultNetwork: "kovan",
 
-  // don't forget to set your provider like:
-  // REACT_APP_PROVIDER=https://dai.poa.network in packages/react-app/.env
-  // (then your frontend will talk to your contracts on the live network!)
-  // (you will need to restart the `yarn run start` dev server after editing the .env)
-
   networks: {
     localhost: {
       url: "http://localhost:8545",
-      /*
-        notice no mnemonic here? it will just use account 0 of the hardhat node to deploy
-        (you can put in a mnemonic here to set the deployer locally)
-      */
     },
     rinkeby: {
       url: `https://rinkeby.infura.io/v3/${process.env.INFURA_ID}`, //<---- YOUR INFURA ID! (or it won't work)
